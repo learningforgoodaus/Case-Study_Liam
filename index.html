@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam's Journey: A Path to Safety</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --brand-deep: #513873;
+            --brand-dark: #413659;
+            --brand-accent: #C6B4D9;
+            --brand-light: #F2F2F2;
+            --bg-color: #f6f5f8;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
+
+        body { 
+            font-family: 'Helvetica', 'Arial', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--brand-dark);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .adventure-card {
+            background-color: white;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 20px 50px rgba(81, 56, 115, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(81, 56, 115, 0.05);
+        }
+
+        .header {
+            background-color: var(--brand-deep);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--brand-accent);
+            transition: width 0.5s ease;
+        }
+
+        .content-area {
+            padding: 2.5rem;
+            min-height: 350px;
+        }
+
+        .choice-btn {
+            display: block;
+            width: 100%;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background-color: white;
+            border: 2px solid var(--brand-accent);
+            border-radius: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--brand-deep);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .choice-btn:hover {
+            background-color: var(--brand-accent);
+            color: var(--brand-deep);
+            transform: translateX(10px);
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .feedback-correct { background-color: #f0fdf4; border-left: 5px solid var(--success); color: #166534; }
+        .feedback-neutral { background-color: #fffbeb; border-left: 5px solid var(--warning); color: #92400e; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .icon-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background-color: var(--brand-light);
+            color: var(--brand-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="adventure-card">
+        <div class="header">
+            <h1 class="text-2xl font-bold uppercase tracking-tight">Liam's Journey: A Path to Safety</h1>
+            <p class="text-sm opacity-80 mt-1">Navigate the logistics of leaving safely</p>
+        </div>
+        <div class="progress-bar">
+            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <div class="content-area">
+            <!-- STEP 1: Introduction -->
+            <div id="step1">
+                <div class="icon-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h2 class="text-xl font-bold text-[var(--brand-deep)] mb-4">The First Conversation</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Liam, a 28-year-old gay man, tells you in confidence that he needs to leave his partner today. His partner monitors his bank accounts and phone. Liam is scared and has no money of his own.
+                </p>
+                <p class="font-bold text-sm text-gray-500 uppercase tracking-widest mb-4">What is the safest first suggestion?</p>
+                
+                <button class="choice-btn" onclick="nextStep(2, 'correct', 'step1')">
+                    Use a work computer to access "Ask Izzy" to find anonymous local help.
+                </button>
+                <button class="choice-btn" onclick="nextStep(2, 'neutral', 'step1')">
+                    Call a close friend from his personal phone to see if he can stay there.
+                </button>
+            </div>
+
+            <!-- STEP 2: Transport -->
+            <div id="step2" class="hidden">
+                <div class="icon-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <h2 class="text-xl font-bold text-[var(--brand-deep)] mb-4">The Logistics of Travel</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Liam needs to get to a local service centre. He has his car, but he's worried his partner will follow him. 
+                </p>
+                <div id="feedback-s2" class="feedback mb-6"></div>
+
+                <p class="font-bold text-sm text-gray-500 uppercase tracking-widest mb-4">How should Liam move safely?</p>
+                
+                <button class="choice-btn" onclick="nextStep(3, 'correct', 'step2')">
+                    Leave the car behind. Use an Uber voucher to travel untraceably.
+                </button>
+                <button class="choice-btn" onclick="nextStep(3, 'neutral', 'step2')">
+                    Drive his car but take a different route than usual.
+                </button>
+            </div>
+
+            <!-- STEP 3: Housing -->
+            <div id="step3" class="hidden">
+                <div class="icon-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <h2 class="text-xl font-bold text-[var(--brand-deep)] mb-4">The First Night</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Liam has reached the service centre. It's late afternoon, and he has nowhere to sleep. He is worried about being judged in a general shelter.
+                </p>
+                <div id="feedback-s3" class="feedback mb-6"></div>
+
+                <p class="font-bold text-sm text-gray-500 uppercase tracking-widest mb-4">What is the next step in the Accommodation Pathway?</p>
+                
+                <button class="choice-btn" onclick="nextStep(4, 'correct', 'step3')">
+                    Call Link2Home (1800 152 152) for Crisis Accommodation in a secure location.
+                </button>
+                <button class="choice-btn" onclick="nextStep(4, 'neutral', 'step3')">
+                    Look for a cheap motel and pay with a credit card.
+                </button>
+            </div>
+
+            <!-- STEP 4: Conclusion -->
+            <div id="step4" class="hidden">
+                <div class="icon-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                </div>
+                <h2 class="text-xl font-bold text-[var(--brand-deep)] mb-4">A Path Toward Independence</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    Because you helped Liam identify the "Gold Standard" resources, he is now safe in a refuge. He has started a plan to move into **Transitional Housing** for the next year while he saves for his own place.
+                </p>
+                <div id="feedback-s4" class="feedback mb-6 block feedback-correct">
+                    <strong>Success!</strong> By using untraceable transport and official gateways like Link2Home, Liam avoided being tracked or found. He is now on the Accommodation Pathway toward long-term safety.
+                </div>
+                
+                <button class="choice-btn text-center" onclick="location.reload()">
+                    RESTART ACTIVITY
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const feedbacks = {
+            step1: {
+                correct: "Excellent choice. Using a library or work computer to access Ask Izzy is safe because it doesn't leave a history on his monitored personal phone.",
+                neutral: "While reaching out to a friend is a natural reaction, calling from his monitored phone will alert the partner immediately. There is also a risk the partner knows this friend's address or will see the call in the logs."
+            },
+            step2: {
+                correct: "Spot on. Shared car GPS or hidden tracking devices are high risks. A voucher-based trip is untraceable on bank statements and phone accounts.",
+                neutral: "Taking a different route doesn't stop GPS tracking or hidden AirTags. Leaving the car is often the safest option when digital stalking is a risk."
+            },
+            step3: {
+                correct: "Perfect. Link2Home is the primary NSW gateway. They can find specialist LGBTQIA+ friendly beds in secure, undisclosed locations.",
+                neutral: "Paying with a credit card leaves a digital footprint that his partner can see immediately. Crisis accommodation is safer and more private."
+            }
+        };
+
+        function nextStep(step, type, prevId) {
+            const progress = ((step - 1) / 3) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            const nextId = 'step' + step;
+            const feedbackDiv = document.getElementById('feedback-s' + step);
+            
+            if (feedbackDiv) {
+                feedbackDiv.innerHTML = feedbacks[prevId][type];
+                feedbackDiv.className = 'feedback mb-6 block ' + (type === 'correct' ? 'feedback-correct' : 'feedback-neutral');
+            }
+
+            document.getElementById(prevId).classList.add('hidden');
+            document.getElementById(nextId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
